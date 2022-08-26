@@ -1,0 +1,123 @@
+/*Regole di Reset*/
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+
+img {
+    max-width: 100%;
+
+}
+
+ul,
+ol,
+menu {
+
+    list-style: none;
+
+}
+
+
+html {
+    font-family: 'Open Sans', sans-serif;
+}
+
+main {
+    max-width: 1400px;
+    max-height: 800px;
+    margin: 0 auto;
+    margin-top: 2rem;
+    display: flex;
+
+}
+
+.wrapper_contacts {
+    width: 40%;
+    height: 800px;
+    
+
+}
+
+.wrapper_messages {
+    width: 60%;
+    background-color: cornflowerblue;
+    height: 800px;
+    
+}
+
+.header_contacts {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #EAEAEA;
+}
+
+.username_photo {
+    display: flex;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.avatar {
+    width: 40px;
+    border-radius: 50%;
+}
+
+.user_name {
+    font-size: 1rem;
+}
+
+.unsername_photo_icons {
+    color: #B1B1B1;
+    display: flex;
+    gap: 1rem;
+    padding-right: 1rem;
+    
+}
+
+.notifications_alarm {
+    display: flex;
+    background-color: #8EDAFC;
+    padding: 1rem;
+    align-items: center;
+}
+
+.notifications_alarm_text {
+    padding-left: 1rem;
+    
+}
+
+.text_notification {
+
+}
+
+.subtext_notification {
+    color: rgba(128, 128, 128);
+    text-decoration: underline;
+}
+
+#icon_bell {
+    color: #8EDAFC;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 50%;
+}
+
+.search_contacts {
+    display: flex;
+}
+
+.search_icon {
+
+}
+
+.input_box {
+    
+}
