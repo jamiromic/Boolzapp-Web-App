@@ -170,7 +170,20 @@ let contacts = [
             contacts: contacts,
             activeContact: 0,
 
-        }
+        },
+        methods: {
+            isHour(date) {
+                return dayjs(date).format('HH:mm')
+            },
+        },
+        
+        
     })
+
+
+
+    
+
+    
 
 
