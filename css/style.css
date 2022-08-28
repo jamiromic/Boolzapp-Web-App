@@ -164,8 +164,9 @@ main {
 }
 
 .chat {
-    height: 550px;
+    min-height: 550px;
     background-image: url(../img/mine.jpg);
+    overflow-y: auto;
 }
 
 .chat_input {

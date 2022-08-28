@@ -177,6 +177,7 @@ let contacts = [
         data: {
             contacts: contacts,
             activeContact: 0,
+            newMessage: '',
         },
         methods: {
             isHour(date) {
@@ -192,15 +193,45 @@ let contacts = [
                 
                 return(contact)
             },
+            addMessage() {
+
+                let newMessage = this.newMessage
+
+                if(newMessage === '') {
+                    return
+                } else {
+
+                    this.contacts[this.activeContact].messages.push
+                    (
+                        {
+                            date: dayjs(),
+                            message: newMessage,
+                            status: 'sent',
+                        }, 
+                    )
+                    this.newMessage = '';
+                    setTimeout(this.addAutomaticMessage, 1000);
+
+                }    
+            },
+            addAutomaticMessage() {
+
+                this.contacts[this.activeContact].messages.push
+                    (
+                        {
+                            date: dayjs(),
+                            message: 'Ok',
+                            status: 'received',
+                        }, 
+                    )
+
+            },
+
         },
         
         
     })
 
-
-    
-    
-    
 
 
 

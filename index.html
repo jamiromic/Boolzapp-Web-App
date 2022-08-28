@@ -89,7 +89,7 @@
             </div>
             <div class="chat_input">
                 <i class="fa-regular fa-face-smile"></i>
-                <input class="input_box_chat" type="text" placeholder="Scrivi un messaggio">
+                <input @keyup.enter="addMessage" v-model="newMessage" class="input_box_chat" type="text" placeholder="Scrivi un messaggio">
                 <i class="fa-solid fa-microphone"></i>
             </div>
 
