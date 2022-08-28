@@ -1,6 +1,7 @@
 // ARRAY DI OGGETTI DEI VARI CONTATTI E MESSAGGI
 let contacts = [
     {
+    id: 0,
     name: 'Michele',
     avatar: './img/avatar_1.jpg',
     visible: true,
@@ -23,6 +24,7 @@ let contacts = [
     ],
     },
     {
+    id: 1,
     name: 'Fabio',
     avatar: './img/avatar_2.jpg',
     visible: true,
@@ -45,6 +47,7 @@ let contacts = [
     ],
     },
     {
+    id: 2,
     name: 'Samuele',
     avatar: './img/avatar_3.jpg',
     visible: true,
@@ -67,6 +70,7 @@ let contacts = [
     ],
     },
     {
+    id: 3,
     name: 'Alessandro B.',
     avatar: './img/avatar_4.jpg',
     visible: true,
@@ -84,6 +88,7 @@ let contacts = [
     ],
     },
     {
+    id: 4,
     name: 'Alessandro L.',
     avatar: './img/avatar_5.jpg',
     visible: true,
@@ -101,6 +106,7 @@ let contacts = [
     ],
     },
     {
+    id: 5,
     name: 'Claudia',
     avatar: './img/avatar_6.jpg',
     visible: true,
@@ -123,6 +129,7 @@ let contacts = [
     ],
     },
     {
+    id: 6,
     name: 'Federico',
     avatar: './img/avatar_7.jpg',
     visible: true,
@@ -140,6 +147,7 @@ let contacts = [
     ],
     },
     {
+    id: 7,
     name: 'Davide',
     avatar: './img/avatar_8.jpg',
     visible: true,
@@ -169,16 +177,30 @@ let contacts = [
         data: {
             contacts: contacts,
             activeContact: 0,
-
         },
         methods: {
             isHour(date) {
+                dayjs(date).format('DD.MM.YYYY.HH:mm')
                 return dayjs(date).format('HH:mm')
+            },
+            currentTimeH() {
+                return dayjs().format('HH:mm')
+            },
+            selectedContact() {
+                let contact = event.path[2].attributes[0].value
+                app.activeContact = contact
+                
+                return(contact)
             },
         },
         
         
     })
+
+
+    
+    
+    
 
 
 

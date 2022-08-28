@@ -51,8 +51,8 @@
                 <i id="search_icon" class="fa-solid fa-magnifying-glass"></i>
                 <input class="input_box" type="text" placeholder="Cerca o inizia una nuova chat">
             </div>
-            <div class="contact_list">
-                <div v-for="contact in contacts" class="user_contact">
+            <div @click="selectedContact" class="contact_list">
+                <div v-for="contact in contacts" class="user_contact" :data_id="contact.id">
                     <img class="avatar" :src="contact.avatar" alt="Photo avatar">
                     <div class="name_user_access">
                         <h3 class="name">{{ contact.name }}</h3>
@@ -69,7 +69,7 @@
                     <img class="avatar" :src="contacts[activeContact].avatar" alt="Photo avatar">
                     <div class="name_user_access">
                         <h3 class="name">{{ contacts[activeContact].name }}</h3>
-                        <p class="last_message">Ultimo accesso oggi alle 12:00</p>
+                        <p class="last_message">Ultimo accesso oggi alle {{ currentTimeH() }}</p>
                     </div>
                 </div>
                 <div class="unsername_photo_icons">
