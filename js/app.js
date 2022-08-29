@@ -177,7 +177,9 @@ let contacts = [
         data: {
             contacts: contacts,
             activeContact: 0,
+            elementSelected: 'active',
             newMessage: '',
+            searchContact: '',
         },
         methods: {
             isHour(date) {
@@ -188,10 +190,11 @@ let contacts = [
                 return dayjs().format('HH:mm')
             },
             selectedContact() {
-                let contact = event.path[2].attributes[0].value
-                app.activeContact = contact
                 
-                return(contact)
+                let contactPosition = event.path[2].attributes[0].value
+                this.activeContact = contactPosition
+                event.path[2].classList.toggle(app.elementSelected)
+                return(contactPosition)
             },
             addMessage() {
 
@@ -233,6 +236,23 @@ let contacts = [
     })
 
 
+    // let wrong = 'agata';
+    // let true = 'mic';
+
+
+    // contacts.forEach(element => {
+
+    //     element.name.toLowerCase();
+
+    //     // element.name.split('')
+
+    //     console.log(element.name.toLowerCase());
+    //     let elementLowerCase = element.name.toLowerCase();
+    //     let elementLowerCaseSplitted = elementLowerCase.split('');
+
+    //     console.log(elementLowerCaseSplitted);
+        
+    // });
 
 
     

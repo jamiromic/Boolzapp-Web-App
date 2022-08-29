@@ -49,24 +49,28 @@
             </div>
             <div class="search_contacts">
                 <i id="search_icon" class="fa-solid fa-magnifying-glass"></i>
-                <input class="input_box" type="text" placeholder="Cerca o inizia una nuova chat">
+                <input v-model="searchContact" class="input_box" value="searchContact" type="text" placeholder="Cerca o inizia una nuova chat">
             </div>
-            <div @click="selectedContact" class="contact_list">
-                <div v-for="contact in contacts" class="user_contact" :data_id="contact.id">
-                    <img class="avatar" :src="contact.avatar" alt="Photo avatar">
+            <ul class="contact_list" @click="selectedContact">
+                <li v-for="contact in contacts"
+                :class="contact.visible ? 'user_contact':'user_contact_invisible'"
+                :data_id="contact.id">
+                    <img class="avatar" 
+                    :src="contact.avatar" alt="Photo avatar">
                     <div class="name_user_access">
                         <h3 class="name">{{ contact.name }}</h3>
                         <p class="last_message">Ultimo messaggio inviato</p>
                     </div>
                     <span class="time_last_message">12:00</span>
-                </div>
-            </div>
+                </li>
+            </ul>
 
         </div>
         <div class="wrapper_messages">
             <div class="header_messages">
                 <div class="user_contact">
-                    <img class="avatar" :src="contacts[activeContact].avatar" alt="Photo avatar">
+                    <img class="avatar" 
+                    :src="contacts[activeContact].avatar" alt="Photo avatar">
                     <div class="name_user_access">
                         <h3 class="name">{{ contacts[activeContact].name }}</h3>
                         <p class="last_message">Ultimo accesso oggi alle {{ currentTimeH() }}</p>

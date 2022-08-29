@@ -131,7 +131,15 @@ main {
 .user_contact {
     display: flex;
     padding: 0.50rem 0.65rem;
+}
 
+.user_contact.active,
+.user_contact:hover {
+    background-color: #E9EBEA;
+}
+
+.user_contact_invisible {
+    display: none;
 }
 
 .name_user_access {
