@@ -192,10 +192,18 @@ let contacts = [
             selectedContact() {
                 
                 let contactPosition = event.path[2].attributes[0].value
+                if (contactPosition !== this.activeContact) {
+                    event.path[2].classList.remove(app.elementSelected)
+                    
+                } else {
+                    event.path[2].classList.add(app.elementSelected)
+
+                }
                 this.activeContact = contactPosition
-                event.path[2].classList.toggle(app.elementSelected)
+                // event.path[2].classList.toggle(app.elementSelected)
                 return(contactPosition)
             },
+
             addMessage() {
 
                 let newMessage = this.newMessage
@@ -229,6 +237,26 @@ let contacts = [
                     )
 
             },
+            toLowerSplit(word) {
+
+                let lowerCaseInput = word.toLowerCase();
+
+                this.contacts.forEach(element => {
+
+                    let nameContact = element.name.toLowerCase();
+
+                    if (nameContact.indexOf(lowerCaseInput)){
+
+                        element.visible = false;
+                        
+                    } else {
+                        element.visible = true;
+                    }
+                    
+                });
+
+                
+            },
 
         },
         
@@ -236,26 +264,8 @@ let contacts = [
     })
 
 
-    // let wrong = 'agata';
-    // let true = 'mic';
 
 
-    // contacts.forEach(element => {
-
-    //     element.name.toLowerCase();
-
-    //     // element.name.split('')
-
-    //     console.log(element.name.toLowerCase());
-    //     let elementLowerCase = element.name.toLowerCase();
-    //     let elementLowerCaseSplitted = elementLowerCase.split('');
-
-    //     console.log(elementLowerCaseSplitted);
-        
-    // });
-
-
-    
 
     
 
