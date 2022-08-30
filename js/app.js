@@ -193,13 +193,13 @@ let contacts = [
                 
                 let contactPosition = event.path[2].attributes[0].value
                 if (contactPosition !== this.activeContact) {
-                    event.path[2].classList.remove(app.elementSelected)
+                    event.path[2].classList.add(app.elementSelected)
                     
                 } else {
-                    event.path[2].classList.add(app.elementSelected)
+                    event.path[2].classList.remove(app.elementSelected)
 
                 }
-                this.activeContact = contactPosition
+                app.activeContact = contactPosition
                 // event.path[2].classList.toggle(app.elementSelected)
                 return(contactPosition)
             },
@@ -208,11 +208,15 @@ let contacts = [
 
                 let newMessage = this.newMessage
 
+                newMessage = newMessage.trim();
+
+                const messagesContact = this.contacts[this.activeContact].messages;
+
                 if(newMessage === '') {
                     return
                 } else {
 
-                    this.contacts[this.activeContact].messages.push
+                    messagesContact.push
                     (
                         {
                             date: dayjs(),
@@ -221,13 +225,10 @@ let contacts = [
                         }, 
                     )
                     this.newMessage = '';
-                    setTimeout(this.addAutomaticMessage, 1000);
 
-                }    
-            },
-            addAutomaticMessage() {
+                    setTimeout(() => {
 
-                this.contacts[this.activeContact].messages.push
+                        messagesContact.push
                     (
                         {
                             date: dayjs(),
@@ -235,9 +236,10 @@ let contacts = [
                             status: 'received',
                         }, 
                     )
-
+                    },1000)
+                }    
             },
-            toLowerSplit(word) {
+            toLower(word) {
 
                 let lowerCaseInput = word.toLowerCase();
 

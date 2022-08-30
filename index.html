@@ -49,7 +49,7 @@
             </div>
             <div class="search_contacts">
                 <i id="search_icon" class="fa-solid fa-magnifying-glass"></i>
-                <input @keyup="toLowerSplit(searchContact)" v-model="searchContact" class="input_box" type="text" placeholder="Cerca o inizia una nuova chat">
+                <input @keyup="toLower(searchContact)" v-model="searchContact" class="input_box" type="text" placeholder="Cerca o inizia una nuova chat">
             </div>
             <ul class="contact_list" @click="selectedContact">
                 <li v-for="contact in contacts"
