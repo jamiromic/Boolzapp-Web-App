@@ -19,84 +19,86 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
         integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <!-- DAY-JS LIBRARY-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.5/dayjs.min.js" 
-        integrity="sha512-Ot7ArUEhJDU0cwoBNNnWe487kjL5wAOsIYig8llY/l0P2TUFwgsAHVmrZMHsT8NGo+HwkjTJsNErS6QqIkBxDw==" 
+    <!-- DAY-JS LIBRARY-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.5/dayjs.min.js"
+        integrity="sha512-Ot7ArUEhJDU0cwoBNNnWe487kjL5wAOsIYig8llY/l0P2TUFwgsAHVmrZMHsT8NGo+HwkjTJsNErS6QqIkBxDw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
 
     <main id="app">
-        <div class="wrapper_contacts">
-            <div class="header_contacts">
-                <div class="username_photo">
-                    <img class="avatar" src="./img/avatar_io.jpg" alt="Foto Utente Sofia">
-                    <h3 class="name">Sofia</h3>
-                </div>
-                <div class="unsername_photo_icons">
-                    <i class="fa-solid fa-circle-notch"></i>
-                    <i class="fa-solid fa-message"></i>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-            </div>
-            <div class="notifications_alarm">
-                <i id="icon_bell" class="fa-solid fa-bell-slash"></i>
-                <div class="notifications_alarm_text">
-                    <h4 class="text_notification">Ricevi notifiche di nuovi messaggi</h4>
-                    <span class="subtext_notification">Attiva notifiche desktop</span>
-                </div>
-            </div>
-            <div class="search_contacts">
-                <i id="search_icon" class="fa-solid fa-magnifying-glass"></i>
-                <input @keyup="toLower(searchContact)" v-model="searchContact" class="input_box" type="text" placeholder="Cerca o inizia una nuova chat">
-            </div>
-            <ul class="contact_list" @click="selectedContact">
-                <li v-for="contact in contacts"
-                :class="contact.visible ? 'user_contact':'user_contact_invisible'"
-                :data_id="contact.id">
-                    <img class="avatar" 
-                    :src="contact.avatar" alt="Photo avatar">
-                    <div class="name_user_access">
-                        <h3 class="name">{{ contact.name }}</h3>
-                        <p class="last_message">Ultimo messaggio inviato</p>
+        <div class="main_wrapper">
+            <div class="wrapper_contacts">
+                <div class="header_contacts">
+                    <div class="username_photo">
+                        <img class="avatar" src="./img/avatar_io.jpg" alt="Foto Utente Sofia">
+                        <h3 class="name">Sofia</h3>
                     </div>
-                    <span class="time_last_message">12:00</span>
-                </li>
-            </ul>
-
-        </div>
-        <div class="wrapper_messages">
-            <div class="header_messages">
-                <div class="user_contact">
-                    <img class="avatar"
-                    :src="contacts[activeContact].avatar" alt="Photo avatar">
-                    <div class="name_user_access">
-                        <h3 class="name">{{ contacts[activeContact].name }}</h3>
-                        <p class="last_message">Ultimo accesso oggi alle {{ currentTimeH() }}</p>
+                    <div class="unsername_photo_icons">
+                        <i class="fa-solid fa-circle-notch"></i>
+                        <i class="fa-solid fa-message"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
                     </div>
                 </div>
-                <div class="unsername_photo_icons">
-                    <i id="search_icon_messages" class="fa-solid fa-magnifying-glass"></i>
-                    <i class="fa-solid fa-paperclip"></i>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                <div class="notifications_alarm">
+                    <i id="icon_bell" class="fa-solid fa-bell-slash"></i>
+                    <div class="notifications_alarm_text">
+                        <h4 class="text_notification">Ricevi notifiche di nuovi messaggi</h4>
+                        <span class="subtext_notification">Attiva notifiche desktop</span>
+                    </div>
                 </div>
-
-            </div>
-            <div class="chat">
-                <ul class="messages_box">
-                    <li v-for="message in contacts[activeContact].messages" 
-                    :class="(message.status === 'sent') ? 'sent' : 'received'">{{ message.message }}
-                <span class="time_message">{{isHour(message.date)}}</span>
-            </li>
+                <div class="search_contacts">
+                    <i id="search_icon" class="fa-solid fa-magnifying-glass"></i>
+                    <input @keyup="toLower(searchContact)" v-model="searchContact" class="input_box" type="text"
+                        placeholder="Cerca o inizia una nuova chat">
+                </div>
+                <ul class="contact_list" @click="selectedContact">
+                    <li v-for="contact in contacts"
+                        :class="contact.visible ? 'user_contact':'user_contact_invisible'"
+                        :data_id="contact.id">
+                        <img class="avatar" :src="contact.avatar" alt="Photo avatar">
+                        <div class="name_user_access">
+                            <h3 class="name">{{ contact.name }}</h3>
+                            <p class="last_message">Ultimo messaggio inviato</p>
+                        </div>
+                        <span class="time_last_message">12:00</span>
+                    </li>
                 </ul>
-            </div>
-            <div class="chat_input">
-                <i class="fa-regular fa-face-smile"></i>
-                <input @keyup.enter="addMessage" v-model="newMessage" class="input_box_chat" type="text" placeholder="Scrivi un messaggio">
-                <i class="fa-solid fa-microphone"></i>
-            </div>
 
+            </div>
+            <div class="wrapper_messages">
+                <div class="header_messages">
+                    <div class="user_contact">
+                        <img class="avatar" :src="contacts[activeContact].avatar" alt="Photo avatar">
+                        <div class="name_user_access">
+                            <h3 class="name">{{ contacts[activeContact].name }}</h3>
+                            <p class="last_message">Ultimo accesso oggi alle {{ currentTimeH() }}</p>
+                        </div>
+                    </div>
+                    <div class="unsername_photo_icons">
+                        <i id="search_icon_messages" class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-paperclip"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+
+                </div>
+                <div class="chat">
+                    <ul class="messages_box">
+                        <li v-for="message in contacts[activeContact].messages"
+                            :class="(message.status === 'sent') ? 'sent' : 'received'">{{ message.message }}
+                            <span class="time_message">{{isHour(message.date)}}</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="chat_input">
+                    <i class="fa-regular fa-face-smile"></i>
+                    <input @keyup.enter="addMessage" v-model="newMessage" class="input_box_chat" type="text"
+                        placeholder="Scrivi un messaggio">
+                    <i class="fa-solid fa-microphone"></i>
+                </div>
+
+            </div>
         </div>
     </main>
 

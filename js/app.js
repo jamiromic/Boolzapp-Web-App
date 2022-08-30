@@ -175,30 +175,33 @@ let contacts = [
     const app = new Vue({
         el: '#app',
         data: {
+            // PORTO DENTRO L'OGGETTO VUE L'ARRAY DI OGGETTI CONTACTS
             contacts: contacts,
+            // CREO UN CONTATORE PER GESTIRE I CONTATTI IN MODO DINAMICO
             activeContact: 0,
+            // INIZIALIZZO VARIABILE VUOTA PER UTILIZZARLA IN FUNZIONE CHE CREERA' NUOVO MESSAGGIO, SERVIRA' PER PULIRE IL CAMPO INPUT SUCCESSIVAMENTE
             newMessage: '',
+             // INIZIALIZZO VARIABILE VUOTA PER UTILIZZARLA IN FUNZIONE DI FILTRO PER I CONTATTI, SERVIRA' PER PULIRE IL CAMPO INPUT SUCCESSIVAMENTE
             searchContact: '',
         },
         methods: {
+            // CREO FUNZIONE CHE MI DARA' LE DATE IN FORMATO ORA:MINUTI
             isHour(date) {
                 dayjs(date).format('DD.MM.YYYY.HH:mm')
                 return dayjs(date).format('HH:mm')
             },
+            // CREO LA FUNZIONE PER AVERE ORA:MINUTI NEL MESSAGGIO CHE ANDREMO A CREARE TRAMITE INPUT
             currentTimeH() {
                 return dayjs().format('HH:mm')
             },
+            // CREO LA FUNZIONE CHE ABBINO ALL'EVENT LISTENER IN CUI IL CONTATTO CLICCATO DIVENTERA' ACTIVE E AGGIORNERA' IL CONTATORE
             selectedContact() {
-                
+                contactSelected = event.path[2];
                 let contactPosition = event.path[2].attributes[0].value
-                if (contactPosition !== this.activeContact) {
-                    
-                }
-                this.activeContact = contactPosition
-                // event.path[2].classList.toggle(app.elementSelected)
+                this.activeContact = contactPosition  
                 return(contactPosition)
             },
-
+            // CREO LA FUNZIONE CHE MI PERMETTE DI CREARE MESSAGGIO E RISPONDERE IN AUTOMATICO AL MESSAGGIO INVIATO
             addMessage() {
 
                 let newMessage = this.newMessage
@@ -234,6 +237,7 @@ let contacts = [
                     },1000)
                 }    
             },
+            // CREO LA FUNZIONE PER CONVERTIRE LA STRINGA NOME CONTATTO E DATO INPUT IN MINUSCOLO E CREO IL FILTRO PER LA RICERCA CONTATTO
             toLower(word) {
 
                 let lowerCaseInput = word.toLowerCase();
