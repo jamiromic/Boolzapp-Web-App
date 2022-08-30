@@ -177,7 +177,6 @@ let contacts = [
         data: {
             contacts: contacts,
             activeContact: 0,
-            elementSelected: 'active',
             newMessage: '',
             searchContact: '',
         },
@@ -193,13 +192,9 @@ let contacts = [
                 
                 let contactPosition = event.path[2].attributes[0].value
                 if (contactPosition !== this.activeContact) {
-                    event.path[2].classList.add(app.elementSelected)
                     
-                } else {
-                    event.path[2].classList.remove(app.elementSelected)
-
                 }
-                app.activeContact = contactPosition
+                this.activeContact = contactPosition
                 // event.path[2].classList.toggle(app.elementSelected)
                 return(contactPosition)
             },
@@ -247,12 +242,12 @@ let contacts = [
 
                     let nameContact = element.name.toLowerCase();
 
-                    if (nameContact.indexOf(lowerCaseInput)){
+                    if (nameContact.indexOf(lowerCaseInput) >= 0){
 
-                        element.visible = false;
+                        element.visible = true;
                         
                     } else {
-                        element.visible = true;
+                        element.visible = false;
                     }
                     
                 });
