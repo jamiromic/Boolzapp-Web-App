@@ -30,17 +30,17 @@ let contacts = [
     visible: true,
     messages: [
     {
-    date: '20/03/2020 16:30:00',
+    date: '12/03/2020 16:30:00',
     message: 'Ciao come stai?',
     status: 'sent'
     },
     {
-    date: '20/03/2020 16:30:55',
+    date: '12/03/2020 16:30:55',
     message: 'Bene grazie! Stasera ci vediamo?',
     status: 'received'
     },
     {
-    date: '20/03/2020 16:35:00',
+    date: '12/03/2020 16:35:00',
     message: 'Mi piacerebbe ma devo andare a fare la spesa.',
     status: 'sent'
     }
@@ -53,17 +53,17 @@ let contacts = [
     visible: true,
     messages: [
     {
-    date: '28/03/2020 10:10:40',
+    date: '11/03/2020 10:10:40',
     message: 'La Marianna va in campagna',
     status: 'received'
     },
     {
-    date: '28/03/2020 10:20:10',
+    date: '11/03/2020 10:20:10',
     message: 'Sicuro di non aver sbagliato chat?',
     status: 'sent'
     },
     {
-    date: '28/03/2020 16:15:22',
+    date: '11/03/2020 16:15:22',
     message: 'Ah scusa!',
     status: 'received'
     }
@@ -195,11 +195,9 @@ let contacts = [
                 return dayjs().format('HH:mm')
             },
             // CREO LA FUNZIONE CHE ABBINO ALL'EVENT LISTENER IN CUI IL CONTATTO CLICCATO DIVENTERA' ACTIVE E AGGIORNERA' IL CONTATORE
-            selectedContact() {
-                contactSelected = event.path[2];
-                let contactPosition = event.path[2].attributes[0].value
-                this.activeContact = contactPosition  
-                return(contactPosition)
+            selectedContact(Idcontact) {
+                let contactSelected = Idcontact;
+                this.activeContact = contactSelected;
             },
             // CREO LA FUNZIONE CHE MI PERMETTE DI CREARE MESSAGGIO E RISPONDERE IN AUTOMATICO AL MESSAGGIO INVIATO
             addMessage() {

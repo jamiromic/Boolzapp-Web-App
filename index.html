@@ -53,10 +53,16 @@
                     <input @keyup="toLower(searchContact)" v-model="searchContact" class="input_box" type="text"
                         placeholder="Cerca o inizia una nuova chat">
                 </div>
-                <ul class="contact_list" @click="selectedContact">
+                <ul class="contact_list">
                     <li v-for="contact in contacts"
-                        :class="contact.visible ? 'user_contact':'user_contact_invisible'"
-                        :data_id="contact.id">
+                        :class="
+                        [
+                        'user_contact',
+                        {'user_contact_invisible': !contact.visible},
+                        {'active': contact.id === activeContact}
+                        ]"
+                        @click="selectedContact(contact.id)"
+                    >
                         <img class="avatar" :src="contact.avatar" alt="Photo avatar">
                         <div class="name_user_access">
                             <h3 class="name">{{ contact.name }}</h3>
